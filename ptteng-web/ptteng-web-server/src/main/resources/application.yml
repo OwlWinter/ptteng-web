@@ -1,0 +1,64 @@
+# mybatis 配置
+mybatis:
+  type-aliases-package: cn.mogeek.rmi.ptteng.model
+  mapper-locations: classpath*:/cn/mogeek/rmi/ptteng/mapper/*.xml
+spring:
+  datasource:
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: SELECT 1 FROM DUAL
+      validation-query-timeout: 30000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+    url: jdbc:mysql:///ptteng?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: [password]
+    type: com.alibaba.druid.pool.DruidDataSource
+  mail:
+    default-encoding: UTF-8
+    host: smtp.163.com
+    port: 25
+    username: [xxxxxxxxxx@163.com]
+    password: [psssword]
+    properties:
+      captchaTemplate: captcha.ftl
+      subject: 注册用户验证码
+  freemarker:
+    suffix: .ftl
+    content-type: text/html
+    charset: utf-8
+    cache: false
+    template-loader-path: classpath:/view/
+  cache:
+    redis:
+      time-to-live: 1d
+#      redis 缓存没有配置是因为使用的默认配置，不需要显示写出来
+
+sdk:
+  tencent:
+    sms:
+      secretid: [id]
+      secretkey: [key]
+      sdk-appid: [1111111]
+      template-id: [66666]
+      sign: [短信模板名]
+      region: ap-guangzhou-open
+      endpoint: sms.tencentcloudapi.com
+    cos:
+      secretid: [id]
+      secretkey: [key]
+      duration-seconds: 7200
+      bucket: [bucket-name]
+      region: ap-guangzhou
+      accessDomain: https://[bucket-name].cos.ap-guangzhou.myqcloud.com
+
+rmi:
+  server:
+    port: 1099
